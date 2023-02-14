@@ -2,71 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  <style>
-    canvas {
-      margin: auto;
-    }
-  </style>
-  <script>
-    let x = 0;
-    let y = 30;
-    let ctx;
-    let img;
-    function ve() {
-      canvas = document.getElementById("myCanvas");
-      if(canvas.getContext) {
-        ctx = canvas.getContext("2d");
-        img = new Image();
-        img.onload = function() {
-          setInterval(function(){draw();},30)};
-        img.src = "Lesson03/ufo.png";
-      }
-      function draw() {
-        drawBg();
-        ctx.drawImage(img, x, y);
-        x +=5;
-        if(x > 300) {
-          x = -50;
-          y = Math.random()*300;
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3</title>
+    <style>
+        #ufo {
+            width: 300px;
+            height: 324px;
+            margin: 0 auto;
+            position: relative;
+            background-image: url(Lesson03/pathfix.jpg);
         }
-      }
-      function drawBg() {
-        let g = ctx.createLinearGradient(0, 0, 0, 300);
-        g.addColorStop(0,"black");
-        g.addColorStop(1,"blue");
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, 300, 400);
-        ctx.fillStyle='white';
 
-        ctx.beginPath();
-        ctx.arc(50, 50, 3, 0, 2 *3.14);
-        ctx.fill();
+        #ufo_move {
+            position: absolute;
+            animation-name: example;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
 
-        ctx.beginPath();
-        ctx.arc(100, 250, 3, 0, 2 *3.14);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(250, 80, 3, 0, 2 *3.14);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(250, 300, 3, 0, 2 *3.14);
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.arc(300, 400, 3, 0, 2 *3.14);
-        ctx.fill();
-      }
-    }
-  </script>
+        @keyframes example {
+            0% {
+                left: 0;
+                top: 0;
+            }
+            15% {
+                left: 18px;
+                top: 22px;
+            }
+            35% {
+                left: 97px;
+                top: 203px;
+            }
+            60% {
+                left: 195px;
+                top: 27px;
+            }
+            85% {
+                left: 246px;
+                top: 195px;
+            }
+            100% {
+                left: 84px;
+                top: 291px;
+            }
+        }
+    </style>
 </head>
-<body onload="ve()">
-  <center>
-    <canvas id="myCanvas" width="300" height="350">
+<body>
+<div id="ufo">
+    <div id="ufo_move">
+        <img src="Lesson03/ufo.png" alt="">
+    </div>
+</div>
 
-    </canvas>
-  </center>
 </body>
 </html>
